@@ -20,7 +20,6 @@ async function amazonPrice() {
         const priceString = await nightmare.goto(url)
         .wait("#priceblock_ourprice")
         .evaluate(() => document.getElementById("priceblock_ourprice").textContent)
-        .end()
 
         const priceFloat = parseFloat(priceString.replace(priceString[0],'').replace(',',''));
         console.log(priceFloat)
@@ -30,7 +29,8 @@ async function amazonPrice() {
         if(priceFloat > 4495) {
             sendSMS(`Price for ${urlArray[3]} is higher\n Click ${url} to view`);
         }
-        console.log("here")
+        //console.log("here")
+        await nightmare.end().catch(error => console.error(error))
     }
     catch (err) {
         console.log(err);
