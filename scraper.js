@@ -23,14 +23,14 @@ async function amazonPrice() {
         .end()
 
         const priceFloat = parseFloat(priceString.replace(priceString[0],'').replace(',',''));
-        let printPrice="ds";
+        console.log(priceFloat)
         if(priceFloat < 4495) {
             sendSMS(`Price for ${urlArray[3]} is lower\n Click ${url} to view`);
         }
         if(priceFloat > 4495) {
             sendSMS(`Price for ${urlArray[3]} is higher\n Click ${url} to view`);
         }
-
+        console.log("here")
     }
     catch (err) {
         console.log(err);
